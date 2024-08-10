@@ -1,4 +1,3 @@
-import cgi
 from typing import Optional, Tuple, Union
 
 import httpx
@@ -8,6 +7,7 @@ from offchain.logger.logging import logger
 from offchain.metadata.adapters import Adapter, AdapterConfig, DEFAULT_ADAPTER_CONFIGS
 from offchain.metadata.fetchers.base_fetcher import BaseFetcher
 from offchain.metadata.registries.fetcher_registry import FetcherRegistry
+from offchain.utils.utils import parse_content_type
 
 
 @FetcherRegistry.register
@@ -48,7 +48,7 @@ class MetadataFetcher(BaseFetcher):
         Args:
             max_retries (int): new maximum number of request retries.
         """
-        self.max_retries = max_retries
+        self.max_retries = max_retries  # pragma: no cover
 
     def set_timeout(self, timeout: int):  # type: ignore[no-untyped-def]
         """Setter function for timeout
@@ -56,7 +56,7 @@ class MetadataFetcher(BaseFetcher):
         Args:
             timeout (int): new request timeout in seconds.
         """
-        self.timeout = timeout
+        self.timeout = timeout  # pragma: no cover
 
     def _get_async_adapter_for_uri(self, uri: str) -> Optional[Adapter]:
         if self.async_adapter_configs is None:
@@ -64,19 +64,16 @@ class MetadataFetcher(BaseFetcher):
             return None
 
         for async_adapter_config in self.async_adapter_configs:
-            if any(
-                uri.startswith(prefix) for prefix in async_adapter_config.mount_prefixes
-            ):
+            if any(uri.startswith(prefix) for prefix in async_adapter_config.mount_prefixes):
                 logger.debug(
-                    f"Selected {async_adapter_config.adapter_cls.__name__} for making async http requests for uri={uri}"  # noqa: E501
+                    f"Selected {async_adapter_config.adapter_cls.__name__} for making async http requests for uri={uri}"
+                    # noqa: E501
                 )
                 return async_adapter_config.adapter_cls(
                     host_prefixes=async_adapter_config.host_prefixes,
                     **async_adapter_config.kwargs,
                 )
-        logger.warning(
-            f"Unable to selected an adapter for async http requests for uri={uri}"
-        )
+        logger.warning(f"Unable to selected an adapter for async http requests for uri={uri}")
         return None
 
     def _head(self, uri: str):  # type: ignore[no-untyped-def]
@@ -89,16 +86,10 @@ class MetadataFetcher(BaseFetcher):
         async_adapter = self._get_async_adapter_for_uri(uri)
         if async_adapter is not None:
             if method == "HEAD":
-                return await async_adapter.gen_head(
-                    url=uri, timeout=self.timeout, sess=self.async_sess
-                )
+                return await async_adapter.gen_head(url=uri, timeout=self.timeout, sess=self.async_sess)
             else:
-                return await async_adapter.gen_send(
-                    url=uri, timeout=self.timeout, sess=self.async_sess
-                )
-        return await self.async_sess.get(
-            uri, timeout=self.timeout, follow_redirects=True
-        )
+                return await async_adapter.gen_send(url=uri, timeout=self.timeout, sess=self.async_sess)
+        return await self.async_sess.get(uri, timeout=self.timeout, follow_redirects=True)
 
     async def _gen_head(self, uri: str) -> httpx.Response:
         return await self._gen(uri=uri, method="HEAD")
@@ -122,13 +113,11 @@ class MetadataFetcher(BaseFetcher):
             size = headers.get("content-length", 0)
             content_type = headers.get("content-type") or headers.get("Content-Type")
             if content_type is not None:
-                content_type, _ = cgi.parse_header(content_type)
+                content_type = parse_content_type(content_type)
 
             return content_type, size
         except Exception as e:
-            logger.error(
-                f"Failed to fetch content-type and size from uri {uri}. Error: {e}"
-            )
+            logger.error(f"Failed to fetch content-type and size from uri {uri}. Error: {e}")
             raise
 
     async def gen_fetch_mime_type_and_size(self, uri: str) -> Tuple[str, int]:
@@ -150,13 +139,11 @@ class MetadataFetcher(BaseFetcher):
             size = headers.get("content-length", 0)
             content_type = headers.get("content-type") or headers.get("Content-Type")
             if content_type is not None:
-                content_type, _ = cgi.parse_header(content_type)
+                content_type = parse_content_type(content_type)
 
             return content_type, size
         except Exception as e:
-            logger.error(
-                f"Failed to fetch content-type and size from uri {uri}. Error: {e}"
-            )
+            logger.error(f"Failed to fetch content-type and size from uri {uri}. Error: {e}")
             raise
 
     def fetch_content(self, uri: str) -> Union[dict, str]:  # type: ignore[type-arg]

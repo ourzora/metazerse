@@ -28,7 +28,9 @@ def safe_async_runner(  # type: ignore[no-untyped-def]
                 try:
                     return await asyncio.wait_for(fn(*args, **kwargs), timeout=timeout)
                 except Exception:
-                    msg = f"Caught exception while executing async function {fn}: {traceback.format_exc()}"  # noqa: E501
+                    msg = (
+                        f"Caught exception while executing async function {fn}: {traceback.format_exc()}"  # noqa: E501
+                    )
                     if i + 1 == attempt:
                         logger.error(msg)
                         if not silent:
@@ -40,3 +42,11 @@ def safe_async_runner(  # type: ignore[no-untyped-def]
         return wrapped
 
     return wrapper
+
+
+def parse_content_type(header_string: str) -> str:
+    from email.message import EmailMessage
+
+    msg = EmailMessage()
+    msg["content-type"] = header_string
+    return msg.get_content_type()
