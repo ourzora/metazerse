@@ -1,6 +1,6 @@
 # Guidelines
 
-This section is an overview for the 3 main types of contributions that are possible for `offchain`.
+This section is an overview of the 3 main types of contributions that are possible for `offchain`.
 
 ## Contributing a Collection Parser
 

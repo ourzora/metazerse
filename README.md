@@ -36,8 +36,8 @@ See [documentation](https://ourzora.github.io/offchain/) for more examples and t
 
 ## Contributing
 
-We welcome contributions that add support for new metadata standards, new ways of retreiving metadata, and ways of normalizing them to a consistent form.
-We are commited to integrating contributions to our indexer and making the results available in our API.
+We welcome contributions that add support for new metadata standards, new ways of retrieving metadata, and ways of normalizing them to a consistent form.
+We are committed to integrating contributions to our indexer and making the results available in our API.
 
 You should be able to contribute a new standard for metadata, and have NFTs that adhere to that metadata standard
 be returned correctly from queries to `api.zora.co`. We hope this helps to foster innovation in how

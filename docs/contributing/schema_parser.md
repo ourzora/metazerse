@@ -1,4 +1,4 @@
-# Contributing a Schema Paser
+# Contributing a Schema Parser
 
 A guide on how to contribute a schema parser.
 
@@ -79,7 +79,7 @@ This should return the following data from the IPFS Gateway:
 ```json
 {
   "name": "Obligatory Song About the iPhone 5",
-  "description": "A new song, everyday, forever. Song A Day is an ever-growing collection of unique songs created by Jonathan Mann, starting January 1st, 2009. Each NFT is a 1:1 representation of that days song, and grants access to SongADAO, the orgninzation that controls all the rights and revenue to the songs. Own a piece of the collection to help govern the future of music. http://songaday.world",
+  "description": "A new song, everyday, forever. Song A Day is an ever-growing collection of unique songs created by Jonathan Mann, starting January 1st, 2009. Each NFT is a 1:1 representation of that days song, and grants access to SongADAO, the organization that controls all the rights and revenue to the songs. Own a piece of the collection to help govern the future of music. http://songaday.world",
   "token_id": 1351,
   "image": "ipfs://QmX2ZdS13khEYqpC8Jz4nm7Ub3He3g5Ws22z3QhunC2k58/1351",
   "animation_url": "ipfs://QmVHjFbGEqXfYuoPpJR4vmRacGM29KR5UenqbidJex8muB/1351",
@@ -348,7 +348,7 @@ def test_opensea_parser_parses_metadata(self, raw_crypto_coven_metadata):
     )
 ```
 
-In addition to testing your parser, you'll need to verify that the parser has been registered and added to the pipeline correctly. The tests in `tests/metadata/registries/test_parser_registry.py` should break if the not modified to include your new parser class.
+In addition to testing your parser, you'll need to verify that the parser has been registered and added to the pipeline correctly. The tests in `tests/metadata/registries/test_parser_registry.py` should break if they are not modified to include your new parser class.
 
 ---
 

@@ -44,7 +44,7 @@ class ENSParser(CollectionParser):
 The token uri is needed to tell the parser where to fetch the metadata from.
 If the token uri is not passed in as part of the input, the pipeline will attempt to fetch it from the `tokenURI(uint256)` function on the contract.
 
-Note, it is not uncommon for token uris to be base64 encoded data is stored entirely on chain e.g. Nouns, Zorbs.
+Note, it is not uncommon for token uris to be base64 encoded data stored entirely on chain e.g. Nouns, Zorbs.
 
 ENS hosts their own metadata service and token uris are constructed in the following format:
 
@@ -137,7 +137,7 @@ This should return the following data from the ENS metadata service:
 
 The next step is to convert the metadata into the [standardized metadata format](../models/metadata.md).
 
-Each field in the new metadata format should either map a field in the standardized metadata format or be added as an `MetadataField` under the `additional_fields` property.
+Each field in the new metadata format should either map a field in the standardized metadata format or be added as a `MetadataField` under the `additional_fields` property.
 
 In the case of ENS, the metadata format has the following fields:
 
@@ -171,7 +171,7 @@ Each of these fields can be mapped into the standard metadata format:
 
 ---
 
-And this is how it would look programatically:
+And this is how it would look programmatically:
 
 ```python
 class ENSParser(CollectionParser):
@@ -339,7 +339,7 @@ def test_ens_parser_parses_metadata(self):
     assert parser.parse_metadata(token=token, raw_data=None) == expected_metadata
 ```
 
-In addition to testing your parser, you'll need to verify that the parser has been registered and added to the pipeline correctly. The tests in `tests/metadata/registries/test_parser_registry.py` should break if the not modified to include your new parser class.
+In addition to testing your parser, you'll need to verify that the parser has been registered and added to the pipeline correctly. The tests in `tests/metadata/registries/test_parser_registry.py` should break if they are not modified to include your new parser class.
 
 ---
 
