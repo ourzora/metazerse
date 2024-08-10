@@ -60,7 +60,7 @@ metadata = pipeline.run([token])[0]
 
 By default, the pipeline uses `https://cloudflare-eth.com` as the provider for the `ContractCaller`.
 This is a free Ethereum RPC provider, which means that it is very easy to exceed the rate-limit.
-The code below illustrates how to use a custom RPC provider to prevent getting rate-limited if token uris need to be retireved from the contract:
+The code below illustrates how to use a custom RPC provider to prevent getting rate-limited if token uris need to be retrieved from the contract:
 
 ```python
 from offchain import MetadataPipeline

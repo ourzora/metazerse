@@ -79,7 +79,7 @@ This should return the following data from the IPFS Gateway:
 ```json
 {
   "name": "Obligatory Song About the iPhone 5",
-  "description": "A new song, everyday, forever. Song A Day is an ever-growing collection of unique songs created by Jonathan Mann, starting January 1st, 2009. Each NFT is a 1:1 representation of that days song, and grants access to SongADAO, the orgninzation that controls all the rights and revenue to the songs. Own a piece of the collection to help govern the future of music. http://songaday.world",
+  "description": "A new song, everyday, forever. Song A Day is an ever-growing collection of unique songs created by Jonathan Mann, starting January 1st, 2009. Each NFT is a 1:1 representation of that days song, and grants access to SongADAO, the organization that controls all the rights and revenue to the songs. Own a piece of the collection to help govern the future of music. http://songaday.world",
   "token_id": 1351,
   "image": "ipfs://QmX2ZdS13khEYqpC8Jz4nm7Ub3He3g5Ws22z3QhunC2k58/1351",
   "animation_url": "ipfs://QmVHjFbGEqXfYuoPpJR4vmRacGM29KR5UenqbidJex8muB/1351",
@@ -109,7 +109,7 @@ This should return the following data from the IPFS Gateway:
 
 The next step is to convert the metadata into the [standardized metadata format](../models/metadata.md).
 
-Each field in the new metadata format should either map a field in the standardized metadata format or be added as an `MetadataField` under the `additional_fields` property.
+Each field in the new metadata format should either map a field in the standardized metadata format or be added as a `MetadataField` under the `additional_fields` property.
 
 In the case of Song a Day, the metadata format has the following fields:
 
@@ -121,7 +121,7 @@ In the case of Song a Day, the metadata format has the following fields:
   "image": "Image media asset",
   "animation_url": "Media asset for videos",
   "external_url": "External linking",
-  "youtube_url": "Video on hosted on Youtube"
+  "youtube_url": "Video hosted on Youtube"
 }
 ```
 

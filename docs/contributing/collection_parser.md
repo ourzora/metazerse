@@ -171,7 +171,7 @@ Each of these fields can be mapped into the standard metadata format:
 
 ---
 
-And this is how it would look programatically:
+And this is how it would look programmatically:
 
 ```python
 class ENSParser(CollectionParser):
