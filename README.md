@@ -85,7 +85,7 @@ poetry run python -m pytest tests/
 
 ### Documentation
 
-This project uses `mkdocs` and `mkdocs-material` for documentation.
+This project uses `mkdocs` and `mkdocs-material` for documentation
 
 ```bash
 poetry run mkdocs serve
