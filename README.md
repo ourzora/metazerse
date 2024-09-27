@@ -8,7 +8,7 @@
 It can handle metadata of many standards (OpenSea, ZORA, Nouns), hosted in many places (ipfs, http, dataURIs),
 and normalize them into a consistent format.
 
-Our goal with this project is to democratize access to NFT metadata.
+Our goal with this project is to democratize access to NFT metadata:
 
 ```shell
 pip install offchain
