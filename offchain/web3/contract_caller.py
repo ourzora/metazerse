@@ -53,7 +53,7 @@ class ContractCaller:
         block_tag: Optional[str] = "latest",
         chunk_size: int = CHUNK_SIZE,
     ) -> dict[str, Optional[Any]]:
-        """Call many functions on a single addresses with differnt arguments per function
+        """Call many functions on a single addresses with different arguments per function
 
         Args:
             address (str): address to call function on
